@@ -1,4 +1,4 @@
-# SLLM
+#  Tree-Planted Transformer (TPT)
 
 This repository provides code for training and evaluating Tree-Planted Transformers (TPTs).
 
