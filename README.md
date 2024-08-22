@@ -49,8 +49,8 @@ python src/preprocess_dependency.py \
         --with_tracking \
         --report_to tensorboard \
         --attn_loss_weight 0.5 \
-        --attn_loss_layers [11] \
-        --attn_loss_heads [0] \
+        --attn_loss_layers 11 \
+        --attn_loss_heads 0 \
         --attn_loss_reduction "none"
     ```
 
