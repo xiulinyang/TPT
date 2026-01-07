@@ -504,7 +504,7 @@ def parse_args():
     parser.add_argument(
         "--num_warmup_steps",
         type=int,
-        default=None,
+        default=40000
         help="Number of steps for the warmup in the lr scheduler.",
     )
     parser.add_argument(
