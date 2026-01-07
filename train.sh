@@ -7,11 +7,10 @@ accelerate launch src/train.py \
     --per_device_train_batch_size 32 \
     --per_device_eval_batch_size 32 \
     --num_train_epochs 10 \
-    --output_dir experiments/example/ \
+    --output_dir experiments/42/ \
     --seed 42 \
-    --checkpointing_steps 5000 \
     --with_tracking \
-    --report_to tensorboard \
+    --report_to wandb \
     --attn_loss_weight 0.5 \
     --attn_loss_layers 11 \
     --attn_loss_heads 0 \
