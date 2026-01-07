@@ -428,8 +428,9 @@ def preprocess_file(
                             # row_reduce_matrix,
                             # col_reduce_matrix,
                         ) = processed
-                        if  len(word_strs_wo_bos_eos) + 2 != dep_path_len_matrix.shape[0]:
-                            print(len(word_strs_wo_bos_eos) + 2,dep_path_len_matrix.shape[0])
+
+                        print(len(word_strs_wo_bos_eos) + 2,dep_path_len_matrix.shape[0],dep_path_len_matrix.shape[1],attn_matrix.shape[0] + 1,attn_matrix.shape[1] +1)
+
 
                         assert (
                             len(word_strs_wo_bos_eos) + 2
