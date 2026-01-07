@@ -904,6 +904,8 @@ def main():
         #     )
         #     block_size = min(1024, config.max_position_embeddings)
         block_size = min(1024, config.max_position_embeddings)
+    else:
+        block_size = args.block_size
     # else:
     #     if args.block_size > tokenizer.model_max_length:
     #         logger.warning(
