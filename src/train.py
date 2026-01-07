@@ -1170,11 +1170,22 @@ def main():
             completed_steps = resume_step // args.gradient_accumulation_steps
             resume_step -= starting_epoch * len(train_dataloader)
 
+
+    output_dir = os.path.join(args.output_dir, "epoch_0_init")
+    accelerator.save_state(output_dir)
+    unwrapped_model = accelerator.unwrap_model(model)
+    unwrapped_model.save_pretrained(
+        output_dir,
+        is_main_process=accelerator.is_main_process,
+        save_function=accelerator.save,
+    )
+    if accelerator.is_main_process:
+        tokenizer.save_pretrained(output_dir)
     # update the progress_bar if load from checkpoint
     progress_bar.update(completed_steps)
-
     compute_attn_loss = compute_attn_loss_builder(args.attn_loss_reduction)
     for epoch in range(starting_epoch, args.num_train_epochs):
+
         model.train()
         if args.with_tracking:
             total_loss = 0
@@ -1323,7 +1334,8 @@ def main():
         #         )
 
         if args.checkpointing_steps == "epoch":
-            output_dir = f"epoch_{epoch}"
+            real_epoch = epoch + 1
+            output_dir = f"epoch_{real_epoch}"
             if args.output_dir is not None:
                 output_dir = os.path.join(args.output_dir, output_dir)
             accelerator.save_state(output_dir)
