@@ -41,7 +41,7 @@ def find_existing_preprocessed_files(output_path: str) -> List[str]:
 
 
 def get_gpt2tokenizer() -> GPT2Tokenizer:
-    tokenizer = GPT2Tokenizer.from_pretrained("xiulinyang/gpt2_mini_baby_10M_32768_42")
+    tokenizer = GPT2Tokenizer.from_pretrained("xiulinyang/gpt2_mini_baby_10Mf_32768_42")
     tokenizer.add_special_tokens({"bos_token": BOS, "eos_token": EOS})
     return tokenizer
 
