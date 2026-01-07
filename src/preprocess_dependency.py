@@ -312,8 +312,7 @@ def preprocess(
     probs: Optional[np.ndarray],
     convert_fn: Callable[[np.ndarray], np.ndarray],
 ) -> Optional[Tuple[str, List[str], str, List[str], List[int], np.ndarray, np.ndarray]]:
-    tree = nltk.Tree.fromstring(line.strip())
-    terminal_strs = tree.leaves()
+    terminal_strs = line.strip().split()
     n_terminals = len(terminal_strs)
     if n_terminals < min_n_terminals or max_n_terminals < n_terminals:
         return None
