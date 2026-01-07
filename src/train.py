@@ -1327,6 +1327,14 @@ def main():
             if args.output_dir is not None:
                 output_dir = os.path.join(args.output_dir, output_dir)
             accelerator.save_state(output_dir)
+            unwrapped_model = accelerator.unwrap_model(model)
+            unwrapped_model.save_pretrained(
+                output_dir,
+                is_main_process=accelerator.is_main_process,
+                save_function=accelerator.save,
+            )
+            if accelerator.is_main_process:
+                tokenizer.save_pretrained(output_dir)
 
     if args.with_tracking:
         accelerator.end_training()
