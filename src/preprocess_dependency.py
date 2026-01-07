@@ -434,8 +434,8 @@ def preprocess_file(
                             # col_reduce_matrix,
                         ) = processed
 
-                        print(word_strs_wo_bos_eos,flush=True)
-                        print(len(word_strs_wo_bos_eos)+2, dep_path_len_matrix.shape[0],dep_path_len_matrix.shape[1],attn_matrix.shape[0] + 1,attn_matrix.shape[1] +1,flush=True)
+                        # print(word_strs_wo_bos_eos,flush=True)
+                        # print(len(word_strs_wo_bos_eos)+2, dep_path_len_matrix.shape[0],dep_path_len_matrix.shape[1],attn_matrix.shape[0] + 1,attn_matrix.shape[1] +1,flush=True)
 
 
                         assert (

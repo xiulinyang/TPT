@@ -463,7 +463,7 @@ def parse_args():
     parser.add_argument(
         "--learning_rate",
         type=float,
-        default=5e-5,
+        default=1e-4,
         help="Initial learning rate (after the potential warmup period) to use.",
     )
     parser.add_argument(
@@ -523,7 +523,7 @@ def parse_args():
     parser.add_argument(
         "--block_size",
         type=int,
-        default=None,
+        default=512,
         help=(
             "Optional input sequence length after tokenization. The training dataset will be truncated in block of"  # noqa
             " this size for training. Default to the model max input length for single sentence inputs (take into"  # noqa
@@ -604,10 +604,10 @@ def parse_args():
             "If passed, LLM loading time and RAM consumption will be benefited."
         ),
     )
-    parser.add_argument("--n_positions", type=int, default=1024)
-    parser.add_argument("--n_embd", type=int, default=768)
-    parser.add_argument("--n_layer", type=int, default=12)
-    parser.add_argument("--n_head", type=int, default=12)
+    parser.add_argument("--n_positions", type=int, default=512)
+    parser.add_argument("--n_embd", type=int, default=512)
+    parser.add_argument("--n_layer", type=int, default=4)
+    parser.add_argument("--n_head", type=int, default=8)
     parser.add_argument("--n_inner", type=int, default=None)
     parser.add_argument("--activation_function", type=str, default="gelu_new")
     parser.add_argument("--resid_pdrop", type=float, default=0.1)
