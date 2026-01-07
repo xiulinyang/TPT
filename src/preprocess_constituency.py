@@ -17,14 +17,6 @@ from utils import configure_logging, logging
 BOS = "<s>"
 EOS = "<eos>"
 
-LRB = "-LRB-"
-RRB = "-RRB-"
-LCB = "-LCB-"
-RCB = "-RCB-"
-LSB = "-LSB-"
-RSB = "-RSB-"
-
-
 def find_existing_preprocessed_files(output_path: str) -> List[str]:
     directory_path = os.path.dirname(output_path)
     split_path = os.path.basename(output_path).split(".")
@@ -42,9 +34,9 @@ def find_existing_preprocessed_files(output_path: str) -> List[str]:
 
 
 def get_gpt2tokenizer() -> GPT2Tokenizer:
-    tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
+    tokenizer = GPT2Tokenizer.from_pretrained("xiulinyang/gpt2_mini_baby_10Mf_32768_42")
     tokenizer.add_special_tokens({"bos_token": BOS, "eos_token": EOS})
-    tokenizer.add_tokens([LRB, RRB, LCB, RCB, LSB, RSB])
+    # tokenizer.add_tokens([LRB, RRB, LCB, RCB, LSB, RSB])
     return tokenizer
 
 

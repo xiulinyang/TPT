@@ -53,7 +53,7 @@ from transformers import (  # CONFIG_MAPPING,; MODEL_MAPPING,; AutoConfig,; Auto
     get_scheduler,
 )
 
-from preprocess_constituency import (  # we use the constieuency version which contains more tokens # noqa
+from preprocess_dependency import (  # we use the constieuency version which contains more tokens # noqa
     get_gpt2tokenizer,
 )
 
@@ -472,7 +472,7 @@ def parse_args():
     parser.add_argument(
         "--num_train_epochs",
         type=int,
-        default=3,
+        default=10,
         help="Total number of training epochs to perform.",
     )
     parser.add_argument(
@@ -504,7 +504,7 @@ def parse_args():
     parser.add_argument(
         "--num_warmup_steps",
         type=int,
-        default=0,
+        default=None,
         help="Number of steps for the warmup in the lr scheduler.",
     )
     parser.add_argument(
@@ -572,7 +572,7 @@ def parse_args():
     parser.add_argument(
         "--checkpointing_steps",
         type=str,
-        default=None,
+        default='epoch',
         help="Whether the various states should be saved at the end of every n steps, or 'epoch' for each epoch.",  # noqa
     )
     parser.add_argument(
@@ -589,7 +589,7 @@ def parse_args():
     parser.add_argument(
         "--report_to",
         type=str,
-        default="all",
+        default="wandb",
         help=(
             'The integration to report the results and logs to. Supported platforms are `"tensorboard"`,'  # noqa
             ' `"wandb"`, `"comet_ml"` and `"clearml"`. Use `"all"` (default) to report to all integrations.'  # noqa
@@ -604,7 +604,10 @@ def parse_args():
             "If passed, LLM loading time and RAM consumption will be benefited."
         ),
     )
-    parser.add_argument("--n_positions", type=int, default=512)
+
+
+    # model architecture
+    parser.add_argument("--n_positions", type=int, default=1024)
     parser.add_argument("--n_embd", type=int, default=512)
     parser.add_argument("--n_layer", type=int, default=4)
     parser.add_argument("--n_head", type=int, default=8)
