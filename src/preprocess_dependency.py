@@ -16,9 +16,13 @@ from transformers import GPT2Tokenizer
 from utils import configure_logging, logging
 
 nlp = spacy.load("en_core_web_sm")
+#
+# BOS = "<|endoftext|>"
+# EOS = "<|endoftext|>"
 
-BOS = "<|endoftext|>"
-EOS = "<|endoftext|>"
+BOS = "<s>"
+EOS = "<eos>"
+
 
 TokenOrStr = Union[spacy.tokens.token.Token, str]
 
@@ -38,6 +42,7 @@ def find_existing_preprocessed_files(output_path: str) -> List[str]:
 
 def get_gpt2tokenizer() -> GPT2Tokenizer:
     tokenizer = GPT2Tokenizer.from_pretrained("xiulinyang/gpt2_mini_baby_10M_32768_42")
+    tokenizer.add_special_tokens({"bos_token": BOS, "eos_token": EOS})
     return tokenizer
 
 
